@@ -25,26 +25,29 @@ clone the project somewhere cozy and source the script from your `.bashrc` or
 source ~/Lab/fzf-command-bookmarks/fzf-command-bookmarks.sh
 ```
 
-## Configuration
+## Key assignment
+
+### Bash
 
 ```bash
 # Shortcut to trigger the bookmark addition functionality
-export FZF_COMMAND_BOOKMARKS_ADD="C-k"
+bind -x "\"\C-k\":_fzf_command_bookmark_add"
 # Shortcut to trigger the bookmark showing functionality
-export FZF_COMMAND_BOOKMARKS_SHOW="C-@"
-# Manages where the bookmarks are kept
-export FZF_COMMAND_BOOKMARKS_FILE=~/.fzf-command-bookmarks.txt
+bind -x "\"\C-@\":_fzf_command_bookmark_show"
 ```
 
-If you want to change any of the above, just add a line to change the
-corresponding environment variable **AFTER** the line that you `source` the
-script. For example, in your `.bashrc`:
+### Zsh
 
-```bash
-source ~/Lab/fzf-command-bookmarks/fzf-command-bookmarks.sh
-# Let's change the file path
-export FZF_COMMAND_BOOKMARKS_FILE=~/.my-bookmarks.txt
+```zsh
+# Shortcut to trigger the bookmark addition functionality
+zle -N fzf-command-bookmark-add-widget _fzf_command_bookmark_add
+bindkey '^k' fzf-command-bookmark-add-widget
+# Shortcut to trigger the bookmark showing functionality
+zle -N fzf-command-bookmark-show-widget _fzf_command_bookmark_show
+bindkey '^@' fzf-command-bookmark-show-widget
 ```
+
+## Saving format
 
 The bookmarks are saved in a file (`~/.fzf-command-bookmarks.txt` by default,
 managed by `FZF_COMMAND_BOOKMARKS_FILE`) in the following notation:
