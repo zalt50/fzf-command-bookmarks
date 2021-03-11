@@ -4,9 +4,6 @@ hash fzf 2> /dev/null || echo "[fzf-command-bookmarks] fzf binary not found!"
 hash highlight 2> /dev/null || echo "[fzf-command-bookmarks] highlight binary not found!"
 
 export FZF_COMMAND_BOOKMARKS_FILE="${HOME}/.fzf_command_bookmarks.txt"
-export FZF_COMMAND_BOOKMARKS_ADD="\C-k"
-export FZF_COMMAND_BOOKMARKS_SHOW="\C-@"
-
 
 # Readline magic helper for bash
 # Found here: https://github.com/junegunn/fzf/wiki/examples#with-write-to-terminal-capabilities
@@ -64,15 +61,3 @@ function _fzf_command_bookmark_add() {
 
 	echo -E "${CMD}##${TITLE}" >> $FZF_COMMAND_BOOKMARKS_FILE
 }
-
-
-if hash bind 2> /dev/null; then
-	bind -x "\"$FZF_COMMAND_BOOKMARKS_ADD\":_fzf_command_bookmark_add"
-	bind -x "\"$FZF_COMMAND_BOOKMARKS_SHOW\":_fzf_command_bookmark_show"
-else
-	zle -N fzf-command-bookmark-add-widget _fzf_command_bookmark_add
-	zle -N fzf-command-bookmark-show-widget _fzf_command_bookmark_show
-
-	bindkey "$FZF_COMMAND_BOOKMARKS_ADD" fzf-command-bookmark-add-widget
-	bindkey "$FZF_COMMAND_BOOKMARKS_SHOW" fzf-command-bookmark-show-widget
-fi
