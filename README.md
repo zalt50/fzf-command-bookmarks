@@ -1,25 +1,19 @@
+<!-- markdownlint-disable-file MD013 -->
 # FZF Command Bookmarks
 
-This is a kind replacement of the deceased [marker](https://github.com/pindexis/marker).
-It uses `fzf` and `highlight` - its only requirements.
-
-It lets you add a command in the bookmarks and then search through your bookmarks.
-Never forget
+This is a kind replacement of the deceased [marker](https://github.com/pindexis/marker). It uses `fzf` and `highlight` - its only requirements. It lets you add a command in the bookmarks and then search through your bookmarks.
 
 ![Screenshot of bookmark show](screenshot_show.png)
 
 ## Installation
 
-For ZSH you can use any plugin manager, for example for [antigen](https://github.com/zsh-users/antigen)
-put in your `.zshrc` before `antigen apply`:
+For zsh you can use any plugin manager, for example for [antigen](https://github.com/zsh-users/antigen) put in your `.zshrc` before `antigen apply`:
 
 ```bash
 antigen bundle dzervas/fzf-command-bookmarks
 ```
 
-For bash or if you don't want to use a plugin manager with ZSH, you can just
-clone the project somewhere cozy and source the script from your `.bashrc` or
-`.zshrc`:
+For bash or if you don't want to use a plugin manager with zsh, you can just clone the project somewhere cozy and source the script from your `.bashrc` or `.zshrc`:
 
 ```bash
 source ~/Lab/fzf-command-bookmarks/fzf-command-bookmarks.sh
@@ -49,14 +43,12 @@ bindkey '^@' fzf-command-bookmark-show-widget
 
 ## Saving format
 
-The bookmarks are saved in a file (`~/.fzf-command-bookmarks.txt` by default,
-managed by `FZF_COMMAND_BOOKMARKS_FILE`) in the following notation:
+The bookmarks are saved in a file (`~/.fzf-command-bookmarks.txt` by default, managed by `FZF_COMMAND_BOOKMARKS_FILE`) in the following notation:
 
-```
+```bash
 my awesome command##This is the title
 ```
 
----
+***
 
-There is currently both bash and zsh support but more tests should be conducted
-(old versions, weird setups, etc.). I don't use fish, so feel free to open an MR.
+There is currently both bash and zsh support but more tests should be conducted (old versions, weird setups, etc.). I don't use fish, so feel free to open an MR.
